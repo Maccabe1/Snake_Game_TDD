@@ -10,13 +10,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class snakeTest {
+
     @Test
-    public void snakeMoves() {
+    public void snakeMovesInAllDirections() {
         Snake snake = new Snake(new Point2D(0, 0));
 
-        snake.setDirection(Direction.RIGHT);
-        snake.update();
-        assertThat(snake.getPosition(), is(new Point2D(1, 0)));
+        for (Direction direction : Direction.values()) {
+            Point2D oldPosition = snake.getPosition();
+            snake.setDirection(direction);
+            snake.update();
+            assertThat(snake.getPosition(), is(oldPosition.add(direction.vector)));
+        }
     }
 }
 

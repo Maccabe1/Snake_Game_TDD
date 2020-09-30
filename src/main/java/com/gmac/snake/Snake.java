@@ -18,7 +18,7 @@ public class Snake {
         position = position.add(direction.vector);
     }
 
-    public Object getPosition() {
+    public Point2D getPosition() {
         return position;
     }
 }
