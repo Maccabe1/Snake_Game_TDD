@@ -2,12 +2,19 @@ package com.gmac.snake;
 
 import javafx.geometry.Point2D;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Snake {
     private Direction direction;
-    private Point2D position;
+    private Point2D head;
+    private Point2D previousTail;
+    private List<Point2D> body = new ArrayList<>();
 
-    public Snake(Point2D position) {
-        this.position = position;
+    public Snake(Point2D head) {
+        this.head = head;
+        this.previousTail = head;
+        body.add(head);
     }
 
     public void setDirection(Direction direction) {
@@ -15,14 +22,28 @@ public class Snake {
     }
 
     public void update() {
-        position = position.add(direction.vector);
+        head = head.add(direction.vector);
+        previousTail = body.remove(body.size() - 1);
+        body.add(head);
     }
 
-    public Point2D getPosition() {
-        return position;
+    public Point2D getHead() {
+        return head;
     }
 
     public boolean isCollidingWith(Food food) {
-        return position.equals(food.getPosition());
+        return head.equals(food.getPosition());
+    }
+
+    public void grow() {
+        body.add(previousTail);
+    }
+
+    public int getLength() {
+        return body.size();
+    }
+
+    public List<Point2D> getBody() {
+        return body;
     }
 }
