@@ -49,5 +49,27 @@ public class snakeTest {
         assertTrue(snake.isOutOfBounds(24));
         assertFalse(snake.isOutOfBounds(25));
     }
+
+    @Test
+    public void snakeDies() {
+        Snake snake = new Snake(new Point2D(25, 0));
+
+        for(int i = 0; i < 5; i++) {
+            snake.setDirection(Direction.RIGHT);
+            snake.update();
+            snake.grow();
+        }
+
+        snake.setDirection(Direction.UP);
+        snake.update();
+
+        snake.setDirection(Direction.DOWN);
+        snake.update();
+
+        snake.setDirection(Direction.LEFT);
+        snake.update();
+
+        assertTrue(snake.isDead());
+    }
 }
 

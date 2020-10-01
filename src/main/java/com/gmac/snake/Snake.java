@@ -51,4 +51,8 @@ public class Snake {
         return head.getX() < 0 || head.getY() < 0 ||
                 head.getX() > size || head.getY() > size;
     }
+
+    public boolean isDead() {
+        return body.lastIndexOf(head) > 0;
+    }
 }
