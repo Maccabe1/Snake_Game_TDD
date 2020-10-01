@@ -46,4 +46,9 @@ public class Snake {
     public List<Point2D> getBody() {
         return body;
     }
+
+    public boolean isOutOfBounds(int size) {
+        return head.getX() < 0 || head.getY() < 0 ||
+                head.getX() > size || head.getY() > size;
+    }
 }

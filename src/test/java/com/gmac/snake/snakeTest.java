@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
@@ -40,6 +41,13 @@ public class snakeTest {
 
         assertThat(snake.getLength(), is(2));
         assertThat(snake.getBody(), hasItem(new Point2D(0, 0)));
+    }
+
+    @Test
+    public void snakeIsOutOfBounds() {
+        Snake snake = new Snake(new Point2D(25, 0));
+        assertTrue(snake.isOutOfBounds(24));
+        assertFalse(snake.isOutOfBounds(25));
     }
 }
 
