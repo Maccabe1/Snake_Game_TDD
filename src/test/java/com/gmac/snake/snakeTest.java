@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 
 public class snakeTest {
@@ -21,6 +22,14 @@ public class snakeTest {
             snake.update();
             assertThat(snake.getPosition(), is(oldPosition.add(direction.vector)));
         }
+    }
+
+    @Test
+    public void snakeCanEatFood() {
+        Snake snake = new Snake(new Point2D(10, 5));
+        Food food = new Food(new Point2D(10, 5));
+        assertTrue(snake.isCollidingWith(food));
+
     }
 }
 
