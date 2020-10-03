@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Snake {
-    private Direction direction;
+    private Direction direction = Direction.RIGHT;
     private Point2D head;
     private Point2D previousTail;
     private List<Point2D> body = new ArrayList<>();

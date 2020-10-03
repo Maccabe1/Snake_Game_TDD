@@ -51,7 +51,7 @@ public class snakeTest {
     }
 
     @Test
-    public void snakeDies() {
+    public void snakeIsDead() {
         Snake snake = new Snake(new Point2D(25, 0));
 
         for(int i = 0; i < 5; i++) {
